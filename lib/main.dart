@@ -27,43 +27,45 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: SingleChildScrollView(
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                for (final sura in Data.quranUz.suraList)
-                  GestureDetector(
-                    child: SizedBox(
-                      child: Padding(
-                        padding: const EdgeInsets.only(
-                          left: 16,
-                          right: 16,
-                          top: 8.0,
-                          bottom: 8.0,
-                        ),
-                        child: Text(
-                          "${sura.id}. ${sura.nameUz} (${sura.nameAr})",
-                        ),
-                      ),
-                    ),
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (_) => OpenSurahScreen(
-                            name: "${sura.nameUz} (${sura.nameAr})",
-                            id: sura.id,
+    return SafeArea(
+      child: Scaffold(
+        body: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: SingleChildScrollView(
+            child: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  for (final sura in Data.quranUz.suraList)
+                    GestureDetector(
+                      child: SizedBox(
+                        child: Padding(
+                          padding: const EdgeInsets.only(
+                            left: 16,
+                            right: 16,
+                            top: 8.0,
+                            bottom: 8.0,
+                          ),
+                          child: Text(
+                            "${sura.id}. ${sura.nameUz} (${sura.nameAr})",
                           ),
                         ),
-                      );
-                    },
-                  ),
-              ],
+                      ),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) => OpenSurahScreen(
+                              name: "${sura.nameUz} (${sura.nameAr})",
+                              id: sura.id,
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+                ],
+              ),
             ),
           ),
         ),
